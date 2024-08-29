@@ -16,6 +16,7 @@ class HeaderElement extends LitElement {
         align-items: center;
         height: 100%;
         padding: 20px;
+        margin-left: 50px;
     }
 
     .logo {

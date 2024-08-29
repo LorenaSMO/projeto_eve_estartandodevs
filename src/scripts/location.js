@@ -70,4 +70,4 @@ const { cidade, estado } = await getCityAndStateFromCep(cep);
 
 const search = document.querySelector('eve-search');
 
-search.setAttribute('location', `${cidade}, ${estado}`);
+search.setAttribute('location', `${cidade}, ${estado}`); /*index.html: location do eve search que começa vazio */
