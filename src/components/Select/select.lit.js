@@ -9,7 +9,8 @@ class SelectElement extends LitElement {
 
     constructor() {
         super();
-        this.loadOptions();
+        this.options = [];
+        this.selectedOption = '';
         this.isOpen = false;
     }
 
@@ -99,18 +100,31 @@ class SelectElement extends LitElement {
         this.requestUpdate();
     }
 
+    firstUpdated() {
+        this.loadOptions();
+    }
+
     loadOptions() {
-        const options = this.querySelectorAll('eve-option');
-
-        let tempOptionsArray = [];
-
-        options.forEach((opt) => {
-            tempOptionsArray.push({ 
-                label: opt.getAttribute('value'),
-            })
-        })
-
-        this.options = tempOptionsArray;
+        if (this.label === "Qualquer dia") {
+            this.options = [
+                { label: "Hoje" },
+                { label: "Amanhã" },
+                { label: "Esta semana" },
+                { label: "Este mês" },
+                { label: "Escolher data" },
+            ];
+        } else if (this.label === "Qualquer tipo") {
+            this.options = [
+                { label: "Presencial" },
+                { label: "Remoto" },
+            ];
+        } else if (this.label === "Classificar por") {
+            this.options = [
+                { label: "Distância" },
+                { label: "Relevância" },
+                { label: "Mais Recentes" },
+            ];
+        }
     }
 
     render() {
@@ -143,5 +157,6 @@ class SelectElement extends LitElement {
         `;
     }
 }
-/*O @click é interpretado pelo lit como se fosse um event listener */
+
 export default SelectElement;
+
